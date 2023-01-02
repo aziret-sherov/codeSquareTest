@@ -47,12 +47,13 @@ const ChatInput = ({setCode, code}: Props) => {
         const newArray:[string] = [...code]
         newArray.push(inputValue)
         setCode(newArray)
+        setInputValue('')
     }
 
     return (
         <ChatWrapper>
-            <Input onChange={(e) => setInputValue(e.target.value)}/>
-            <Button onClick={addNewCodeEditor}>Ask</Button>
+            <Input onChange={(e) => setInputValue(e.target.value)} value={inputValue}/>
+            <Button disabled={!inputValue.length} onClick={addNewCodeEditor}>Ask</Button>
         </ChatWrapper>
     )
 };
